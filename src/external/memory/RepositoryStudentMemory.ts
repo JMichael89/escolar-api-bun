@@ -4,9 +4,10 @@ import RepositoryStudent from "../../core/student/service/RepositoryStudent";
 export default class repositoryStudentMemory implements RepositoryStudent {
     private students: Student[] = []
 
-    async save(entity: Student): Promise<Student> {
-        this.students.push(entity)
-        return entity
+    async create(entity: Student): Promise<Student> {
+        const newStudent = { ...entity, id: Math.random() }
+        this.students.push(newStudent)
+        return newStudent
     }
 
     async remove(entity: Student): Promise<Student> {

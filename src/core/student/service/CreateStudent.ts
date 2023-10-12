@@ -11,7 +11,7 @@ type EntityToEnter = {
     birth: Date
 }
 
-export default class RegisterStudent implements UseCase<Student, Student> {
+export default class CreateStudent implements UseCase<Student, Student> {
     constructor(readonly repository: RepositoryStudent) { }
 
     async execute(entity: Student): Promise<Student> {
@@ -22,7 +22,7 @@ export default class RegisterStudent implements UseCase<Student, Student> {
             throw new Error("Aluno já existente")
         }
 
-        return this.repository.save(entity)
+        return this.repository.create(entity)
     }
 
 }
